@@ -1,0 +1,55 @@
+extends ../_main
+
+block variables
+  - var title = 'About me'
+
+block content
+  include ../common/_header
+  .content
+    section.about
+      +title('about','Обо мне')
+      .me-info
+        img(src='assets/img/user-photo.png')
+        h2.me-info_title
+        p.me-info_text= about.me
+
+    section.skills
+      h2.me-info_title
+      p.me-info_text Больше всего меня привлекает Frontend разработка, но я также знаком и с удовольствием решаю задачи на Backend с использованием Node.js. Но давайте по порядку
+
+      .skills-meters
+        // ToDo: meters to be done in JS
+        each list, set in about.skills
+          .skills-row
+            h3.skill-set_title= set
+              each val, skill in list
+                figure
+                  figcaption= skill
+
+  section.contacts
+    .contacts_map
+    .contacts-details
+      .h2.contacts_title
+      ul.contacts_list
+        li.contacts_item
+          a.contacts-item_link(href=`skype:${user.contacts.skype}`)
+            i.fa.fa-skype(aria-hidden='true')
+            span.contacts-item_text= user.contacts.skype
+        li.contacts_item
+          a.contacts-item_link(href=`mailto:${user.contacts.email}`)
+            i.fa.fa-envelope(aria-hidden='true')
+            span.contacts-item_text= user.contacts.email
+        li.contacts_item
+          a.contacts-item_link(href=`call:${user.contacts.phone}`)
+            i.fa.fa-phone(aria-hidden='true')
+            span.contacts-item_text= user.contacts.phone
+        li.contacts_item
+          a.contacts-item_link(href='https://maps.google.com')
+            i.fa.fa-map-marker(aria-hidden='true')
+            span.contacts-item_text= user.contacts.address
+
+
+  include ../common/_footer
+
+block scripts
+  // can include scripts for the map and skill meters

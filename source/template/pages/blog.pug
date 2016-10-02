@@ -1,0 +1,33 @@
+extends ../_main
+include ../common/_mixins
+
+block variables
+  - var title = 'Blog'
+
+block content
+  header.header
+    +socials('bright')
+    .intro
+      .intro_img
+        img.intro_img(alt='Avatar')
+      +title('blog', 'Блог')
+      p.intro_text Статьи, которые я написал
+    button.header_menu-button
+    include ../common/_header-frame
+
+  aside.blog-menu
+    ul.blog-menu_list
+      each item, idx in blog
+        li.blog-menu_item
+          a.blog-menu_item-link(href='#',class=idx===0 ? 'blog-menu_item-link--active' : '')= item.title
+
+  section.blog
+    each item in blog
+      h2.blog_title= item.title
+      p.blog_date= item.date
+      p.blog_text= item.text
+      if item.picture
+        img(src=item.picture, alt='Blog pic')
+
+  include ../common/_footer
+

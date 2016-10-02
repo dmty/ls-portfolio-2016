@@ -1,0 +1,11 @@
+mixin socials(color)
+  ul.socials
+    each link, item in user.social
+      li.social-item
+        a(href=link,target='_blank',class=`social_link--${color}`)
+          i(class=`fa.fa-${item}`, aria-hidden='true')
+
+mixin title(name, title)
+  .section-title
+    .section-title_watermark(class=`watermark_${name}`)
+    h1.section-title_header= title

@@ -1,0 +1,17 @@
+include _mixins
+
+footer.footer
+  .footer-wrapper
+    .footer-description
+      p.footer-description_text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool 
+    .footer-menu
+      ul.footer-navi
+        - var navi=[{page:'Мои работы', link: '/works'}, {page:'Обо мне', link:'/about'}, {page: 'Блог', link: '/blog'}, {page: 'Авторизация', link: '/login'}]
+        each item in navi
+          li.footer-navi_item
+            a(href=item.link).footer-navi_link= item.page
+      +socials(light)
+    .footer-quote
+      p.footer-quote_text= quote.text
+      b.footer-quote_author= quote.author
+  p.footer_copy © #{user.name} | Создано с любовью в LoftSchool | 2016

@@ -1,0 +1,55 @@
+extends ../_main
+
+block variables
+  - var title = 'Works'
+
+block content
+  include ../common/_header
+  .content
+    section.works
+      +title('works','Мои работы')
+
+      .portfolio-slider
+        .portfolio-image
+          img(alt='Portfolio website').portfolio_image
+        .portfolio-description
+          h2.portfolio-item_title= works[0].title
+          p.portfolio-item_tools= works[0].tools
+          a.portfolio-item_link(target='_blank', href=works[0].link)
+            i.fa.fa-link(aria-hidden='true')
+            span.portfolio-item_link-text Посмотреть сайт
+        button.portfolio_control(type='button')
+          i.fa.fa-chevron-left(aria-hidden='true')
+        button.portfolio_control(type='button')
+          i.fa.fa-chevron-right(aria-hidden='true')
+        ol.portfolio_indicators
+          li.portfolio_indicator.portfolio_indicator--active
+          li.portfolio_indicator
+          li.portfolio_indicator
+          li.portfolio_indicator
+
+    section.portfolio-about
+      +title('about','Что обо мне говорят')
+
+      .testimonials
+        each item in testimonials
+          .feed
+            .feed_img
+              img.feed_img(src=item.img)
+            .feed_text
+              .feed_quotemark
+              p.feed_text= item.text
+            .feed_name= item.name
+            .feed_title= item.title
+
+      form.contact-form(action='/contact')
+        h2.contact-form_title
+        input(type='text', placeholder='Имя').contact-form_input
+        input(type='email', placeholder='Email').contact-form_input
+        textarea(rows='4', placeholder='Ваше сообщение').contact-form_text
+        button(type='submit').contact-form_button Отправить
+        button(type='button').contact-form_button Очистить
+
+  include ../common/_footer
+
+block scripts

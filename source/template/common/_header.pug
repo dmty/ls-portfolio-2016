@@ -1,0 +1,13 @@
+include _mixins
+
+header.header
+  +socials('bright')
+  .intro
+    .intro_img
+      img.intro_img(alt='Avatar')
+    .intro_name= user.name
+    .intro_site Личный сайт разработчика
+  .watermark
+  button.header_menu-button
+  button.header_scroll-button
+  include ../common/_header-frame
